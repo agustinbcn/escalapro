@@ -1,36 +1,112 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EscalaPro | Human-Assisted CX Concierge</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EscalaPro — Escalation Concierge (human-assisted)</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .hero-bg {
+      background-image: linear-gradient(120deg, rgba(58,64,255,0.75), rgba(0,200,190,0.70)), url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .modal-backdrop { background: rgba(2,6,23,0.6); }
+    .card-shadow { box-shadow: 0 10px 30px rgba(2,6,23,0.12); }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
-  <!-- Hero Section -->
-  <section class="relative bg-cover bg-center h-screen" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1920&q=80');">
-    <div class="absolute inset-0 bg-black/50"></div>
-    <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-6">
-      <h1 class="text-4xl md:text-6xl font-bold mb-6">EscalaPro</h1>
-      <p class="text-lg md:text-2xl mb-8 max-w-2xl">Human-Assisted AI Concierge que lleva la gestión de escalaciones CX al siguiente nivel.</p>
-      <a href="#contacto" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full transition">Solicita una demo</a>
-    </div>
-  </section>
+<body class="antialiased text-slate-800 bg-slate-50">
 
-  <!-- About Section -->
-  <section class="py-20 px-6 md:px-20 bg-white text-center">
-    <h2 class="text-3xl font-bold mb-6">¿Qué es EscalaPro?</h2>
-    <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-10">EscalaPro combina Inteligencia Artificial con revisión humana experta para gestionar casos críticos de Customer Experience. Detecta, prioriza y redacta respuestas que un concierge humano personaliza para garantizar empatía, precisión y contexto cultural.</p>
-    <div class="mt-12">
-      <h3 class="text-2xl font-semibold mb-4">Recursos y enlaces de interés sobre IA y CX</h3>
-      <ul class="text-blue-600 space-y-3">
-        <li><a href="https://www.gartner.com/en/customer-service-support" target="_blank" class="hover:underline">Gartner CX & AI Insights</a></li>
-        <li><a href="https://hbr.org/topic/artificial-intelligence" target="_blank" class="hover:underline">Harvard Business Review - Artificial Intelligence</a></li>
-        <li><a href="https://www.mckinsey.com/featured-insights/artificial-intelligence" target="_blank" class="hover:underline">McKinsey: AI and Customer Experience</a></li>
-        <li><a href="https://customerthink.com/" target="_blank" class="hover:underline">CustomerThink Community</a></li>
-        <li><a href="https://www.forrester.com/research/ai-customer-experience" target="_blank" class="hover:underline">Forrester: AI in Customer Experience</a></li>
-      </ul>
+  <header class="w-full bg-white/60 backdrop-blur sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-md bg-gradient-to-br from-indigo-600 to-teal-400 flex items-center justify-center text-white font-bold card-shadow">EP</div>
+        <div>
+          <a href="#" class="text-lg font-semibold text-slate-900">EscalaPro</a>
+          <div class="text-xs text-slate-500">Escalation Concierge — human-assisted</div>
+        </div>
+      </div>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#how" class="text-slate-700 hover:text-slate-900">Cómo funciona</a>
+        <a href="#features" class="text-slate-700 hover:text-slate-900">Beneficios</a>
+        <a href="#resources" class="text-slate-700 hover:text-slate-900">Recursos</a>
+        <button id="openModalBtn" class="px-4 py-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700">Solicitar demo</button>
+      </nav>
     </div>
-  </section>
+  </header>
+
+  <main>
+    <section class="hero-bg text-white">
+      <div class="max-w-7xl mx-auto px-6 py-20 lg:py-32 flex flex-col lg:flex-row items-center gap-12">
+        <div class="w-full lg:w-6/12">
+          <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight drop-shadow-lg">EscalaPro — La mano humana que acelera decisiones críticas</h1>
+          <p class="mt-4 text-xl text-white/95 max-w-xl">¿Eres profesional CX? ¿Quieres saber cómo la IA te puede ayudar?</p>
+          <div class="mt-8 flex gap-4 items-center">
+            <button id="heroDemoBtn" class="inline-flex items-center gap-3 px-5 py-3 rounded-md bg-white text-indigo-700 font-semibold hover:bg-white/90 shadow">Solicitar demo</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="modal" class="hidden fixed inset-0 z-50 flex items-center justify-center">
+    <div class="modal-backdrop absolute inset-0"></div>
+    <div class="relative bg-white w-full max-w-xl mx-4 rounded-2xl overflow-hidden card-shadow z-10">
+      <div class="p-6">
+        <div class="flex items-start justify-between">
+          <div>
+            <h3 class="text-xl font-semibold">Solicitar demo — EscalaPro</h3>
+            <p class="text-sm text-slate-600 mt-1">Rellena tus datos y recibiremos tu solicitud.</p>
+          </div>
+          <button id="closeModal" class="text-slate-400 hover:text-slate-600">&times;</button>
+        </div>
+
+        <form id="demoForm" class="mt-6 space-y-4">
+          <input name="name" type="text" required placeholder="Nombre" class="w-full rounded-md border p-2" />
+          <input name="email" type="email" required placeholder="Email" class="w-full rounded-md border p-2" />
+          <input name="company" type="text" placeholder="Empresa" class="w-full rounded-md border p-2" />
+          <textarea name="message" rows="4" required placeholder="Mensaje" class="w-full rounded-md border p-2"></textarea>
+          <div class="flex gap-3">
+            <button type="submit" class="px-4 py-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700">Enviar</button>
+            <button type="button" id="cancelDemo" class="px-4 py-2 rounded-md bg-slate-200 text-slate-700">Cancelar</button>
+          </div>
+          <p id="demoStatus" class="text-sm text-slate-600 mt-2"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('modal');
+    const openModalBtn = document.getElementById('openModalBtn');
+    const heroDemoBtn = document.getElementById('heroDemoBtn');
+    const closeModal = document.getElementById('closeModal');
+    const cancelDemo = document.getElementById('cancelDemo');
+    const demoForm = document.getElementById('demoForm');
+    const demoStatus = document.getElementById('demoStatus');
+
+    function showModal() { modal.classList.remove('hidden'); }
+    function hideModal() { modal.classList.add('hidden'); demoStatus.textContent = ''; demoForm.reset(); }
+
+    openModalBtn?.addEventListener('click', showModal);
+    heroDemoBtn?.addEventListener('click', showModal);
+    closeModal?.addEventListener('click', hideModal);
+    cancelDemo?.addEventListener('click', hideModal);
+
+    demoForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = encodeURIComponent(e.target.name.value);
+      const email = encodeURIComponent(e.target.email.value);
+      const company = encodeURIComponent(e.target.company.value);
+      const message = encodeURIComponent(e.target.message.value);
+      const mail = 'agustinbcn@gmail.com';
+      const subject = encodeURIComponent('Solicitud demo EscalaPro — ' + e.target.company.value);
+      const body = encodeURIComponent(`Nombre: ${e.target.name.value}\nEmail: ${e.target.email.value}\nEmpresa: ${e.target.company.value}\nMensaje: ${e.target.message.value}`);
+      window.location.href = `mailto:${mail}?subject=${subject}&body=${body}`;
+      demoStatus.textContent = 'Tu cliente de correo se abrirá para enviar la solicitud a agustinbcn@gmail.com';
+      setTimeout(hideModal, 2000);
+    });
+  </script>
 </body>
 </html>
